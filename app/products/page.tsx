@@ -1,4 +1,11 @@
-import { Grid, Card, CardContent, CardMedia, Typography, CardActions } from "@mui/material";
+import {
+  Grid,
+  Card,
+  CardContent,
+  CardMedia,
+  Typography,
+  CardActions,
+} from "@mui/material";
 import Link from "next/link";
 
 const getData = async () => {
@@ -16,7 +23,8 @@ const Products = async () => {
       <Grid container spacing={3} style={{ maxWidth: "1200px" }}>
         {products.map((product: any, index: number) => (
           <Grid item key={product.id} xs={12} sm={6} md={3}>
-<Link href={`/products/${product.id}/${product.title.replace(/[.,\-_]/g, '').replace(/\s+/g, '')}`} key={index}>
+<Link href={`/products/${product.id}/${product.title.replace(/[.,\-_'&"]/g, '').replace(/\s+/g, '').replace(/&/g, 'and')}`} key={index}>
+
               <Card style={{ height: "100%" }}>
                 <CardMedia
                   component="img"

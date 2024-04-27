@@ -16,6 +16,9 @@ const getData = async (id: string): Promise<Product> => {
   return response.json();
 };
 
+
+
+
 interface Product {
   id: number;
   title: string;
@@ -31,7 +34,7 @@ interface Product {
 
 const Product = async ({ params }: ProductProps) => {
   const product = await getData(params.id);
-  let newText: string = product.title.replace(/[.,\-_]/g, '').replace(/\s+/g, '')
+  let newText: string = product.title.replace(/[.,\-_'&"]/g, '').replace(/\s+/g, '').replace(/&/g, 'and')
 
   if (newText !== params.title) {
     redirect(`/products/${params.id}/${newText}`);
