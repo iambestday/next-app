@@ -6,7 +6,6 @@ import {
   Typography,
 } from "@mui/material";
 import { redirect } from "next/navigation";
-import "./Product.scss";
 
 interface ProductProps {
   params: {
@@ -38,23 +37,17 @@ interface Product {
 const Product = async ({ params }: ProductProps) => {
   const product = await getData(params.id);
   let newText: string = product.title
-  .replace(/[^a-zA-Z0-9]/g, "")
-  .replace(/\s+/g, "")
-  .replace(/&/g, "and");
+    .replace(/[^a-zA-Z0-9]/g, "")
+    .replace(/\s+/g, "")
+    .replace(/&/g, "and");
 
-  
   if (newText !== params.title) {
     redirect(`/products/${params.id}/${newText}`);
   } else {
     return (
-      <div className="centered-card">
-        <Card className="custom-card">
-          <CardMedia
-            component="img"
-            height="200"
-            image={product.image}
-            alt={product.title}
-          />
+      <div style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
+        <Card style={{ height: "auto", width: "500px" }}>
+          <CardMedia component="img" height="200" image={product.image} alt={product.title} />
           <CardContent>
             <Typography gutterBottom variant="h5" component="div">
               {product.title}

@@ -23,7 +23,7 @@ export default function RootLayout({
       <body className={inter.className}>
       <AppRouterCacheProvider >
       <ThemeProvider theme={theme}>
-      <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', justifyContent: 'space-between', alignItems: 'center', padding: '20px' }}>
+      <div style={{ minHeight: '100svh', display: 'flex', flexDirection: 'column', justifyContent: 'space-between', alignItems: 'center', padding: '20px' }}>
               <Header />
               {children}
               <Footer />
