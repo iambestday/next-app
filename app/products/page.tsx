@@ -19,12 +19,11 @@ const Products = async () => {
   const products = await getData();
 
   return (
-   <>
+    <>
       <Grid container spacing={3} style={{ maxWidth: "1200px" }}>
         {products.map((product: any, index: number) => (
           <Grid item key={product.id} xs={12} sm={6} md={3}>
-<Link href={`/products/${product.id}/${product.title.replace(/[.,\-_'&"]/g, '').replace(/\s+/g, '').replace(/&/g, 'and')}`} key={index}>
-
+         
               <Card style={{ height: "100%" }}>
                 <CardMedia
                   component="img"
@@ -33,9 +32,17 @@ const Products = async () => {
                   alt={product.title}
                 />
                 <CardContent>
+                <Link
+              href={`/products/${product.id}/${product.title
+                .replace(/[.,\-_'&"]/g, "")
+                .replace(/\s+/g, "")
+                .replace(/&/g, "and")}`}
+              key={index}
+            >
                   <Typography gutterBottom variant="h5" component="div">
                     {product.title}
                   </Typography>
+                  </Link>
                   <Typography variant="body2" color="text.secondary">
                     {product.description}
                   </Typography>
@@ -46,7 +53,7 @@ const Products = async () => {
                   </Typography>
                 </CardActions>
               </Card>
-            </Link>
+           
           </Grid>
         ))}
       </Grid>
