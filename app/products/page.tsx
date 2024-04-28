@@ -19,7 +19,7 @@ const Products = async () => {
   const products = await getData();
 
   return (
-    <div style={{ display: "flex", justifyContent: "center", padding: "20px" }}>
+   <>
       <Grid container spacing={3} style={{ maxWidth: "1200px" }}>
         {products.map((product: any, index: number) => (
           <Grid item key={product.id} xs={12} sm={6} md={3}>
@@ -50,7 +50,7 @@ const Products = async () => {
           </Grid>
         ))}
       </Grid>
-    </div>
+    </>
   );
 };
 

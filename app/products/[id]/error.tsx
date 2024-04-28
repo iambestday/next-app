@@ -3,7 +3,7 @@
 const Error = () => {
     return (
         <div>
-            Error Page (ID)
+            Error Page (page id incorrect)
         </div>
     );
 }

@@ -22,7 +22,9 @@ export default function RootLayout({
       <body className={inter.className}>
       <AppRouterCacheProvider >
       <ThemeProvider theme={theme}>
+      <div style={{ display: "flex", justifyContent: "center", padding: "20px" }}>
         {children}
+        </div>
         </ThemeProvider>
         </AppRouterCacheProvider>
         </body>
