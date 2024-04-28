@@ -33,10 +33,13 @@ const Products = async () => {
                 />
                 <CardContent>
                 <Link
-              href={`/products/${product.id}/${product.title
-                .replace(/[.,\-_'&"]/g, "")
+               href={`products/${product.id}/${product.title
+                .replace(/[.,\-_'&"\/\\]/g, "")
                 .replace(/\s+/g, "")
-                .replace(/&/g, "and")}`}
+                .replace(/&/g, "and")
+                .replace(/\(/g, "")
+                .replace(/\)/g, "")
+                .replace(/-/g, "")}`}
               key={index}
             >
                   <Typography gutterBottom variant="h5" component="div">

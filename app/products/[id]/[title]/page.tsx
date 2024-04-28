@@ -1,4 +1,10 @@
-import { Card, CardContent, CardMedia, Rating, Typography } from "@mui/material";
+import {
+  Card,
+  CardContent,
+  CardMedia,
+  Rating,
+  Typography,
+} from "@mui/material";
 import { redirect } from "next/navigation";
 import "./Product.scss";
 
@@ -16,9 +22,6 @@ const getData = async (id: string): Promise<Product> => {
   return response.json();
 };
 
-
-
-
 interface Product {
   id: number;
   title: string;
@@ -34,15 +37,27 @@ interface Product {
 
 const Product = async ({ params }: ProductProps) => {
   const product = await getData(params.id);
-  let newText: string = product.title.replace(/[.,\-_'&"]/g, '').replace(/\s+/g, '').replace(/&/g, 'and')
+  let newText: string = product.title
+  .replace(/[.,\-_'&"\/\\]/g, "")
+  .replace(/\s+/g, "")
+  .replace(/&/g, "and")
+  .replace(/\(/g, "")
+  .replace(/\)/g, "")
+  .replace(/-/g, "");
 
+  
   if (newText !== params.title) {
     redirect(`/products/${params.id}/${newText}`);
   } else {
     return (
       <div className="centered-card">
         <Card className="custom-card">
-          <CardMedia component="img" height="200" image={product.image} alt={product.title} />
+          <CardMedia
+            component="img"
+            height="200"
+            image={product.image}
+            alt={product.title}
+          />
           <CardContent>
             <Typography gutterBottom variant="h5" component="div">
               {product.title}
