@@ -32,16 +32,15 @@ const Products = async () => {
                   alt={product.title}
                 />
                 <CardContent>
+  
+
                 <Link
-               href={`products/${product.id}/${product.title
-                .replace(/[.,\-_'&"\/\\]/g, "")
-                .replace(/\s+/g, "")
-                .replace(/&/g, "and")
-                .replace(/\(/g, "")
-                .replace(/\)/g, "")
-                .replace(/-/g, "")}`}
-              key={index}
-            >
+    href={`products/${product.id}/${product.title
+        .replace(/[^a-zA-Z0-9]/g, "")
+        .replace(/\s+/g, "")
+        .replace(/&/g, "and")}`}
+    key={index}
+>
                   <Typography gutterBottom variant="h5" component="div">
                     {product.title}
                   </Typography>
@@ -51,6 +50,7 @@ const Products = async () => {
                   </Typography>
                 </CardContent>
                 <CardActions>
+                  
                   <Typography variant="h6" color="text.primary">
                     ${product.price}
                   </Typography>

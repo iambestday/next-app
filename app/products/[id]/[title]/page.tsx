@@ -38,12 +38,9 @@ interface Product {
 const Product = async ({ params }: ProductProps) => {
   const product = await getData(params.id);
   let newText: string = product.title
-  .replace(/[.,\-_'&"\/\\]/g, "")
+  .replace(/[^a-zA-Z0-9]/g, "")
   .replace(/\s+/g, "")
-  .replace(/&/g, "and")
-  .replace(/\(/g, "")
-  .replace(/\)/g, "")
-  .replace(/-/g, "");
+  .replace(/&/g, "and");
 
   
   if (newText !== params.title) {
