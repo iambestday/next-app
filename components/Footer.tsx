@@ -2,8 +2,8 @@ import React from 'react';
 
 const Footer = () => {
   return (
-    <footer>
-      {/* Your footer content here */}
+    <footer style={{ marginTop:"50px"}}>
+     
       <p>Copyright &copy; 2024</p>
     </footer>
   );
